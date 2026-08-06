@@ -1,0 +1,27 @@
+{
+    "dependencies": {
+        "rhel": [
+	    "tcl",
+            "tcl-devel",
+	    "sqlite",
+	    "sqlite-devel",
+	    "wget",
+            "gcc",
+            "git",
+            "lksctp-tools-devel",
+            "bc",
+            "perf",
+            "zip",
+            "unzip",
+            "time",
+            "perl-FindBin",
+            "perl-IPC-Cmd",
+            "perl-Time-Piece",
+            "pcp-zeroconf",
+            "pcp-pmda-openmetrics",
+            "pcp-pmda-denki"
+        ],
+        "pip": [
+        ]
+    }
+}
