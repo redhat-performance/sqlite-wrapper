@@ -335,7 +335,7 @@ for gl_iter in $(seq 1 1 $to_times_to_run); do
 				max_elpased_time=$(echo $max_elpased_time | cut -d'.' -f1)
 				max_sys=$(echo $max_sys | cut -d'.' -f1)
 				max_user=$(echo $max_user | cut -d'.' -f1)
-				results2pcp_add_value "iteration:1"
+				results2pcp_add_value "iteration:${gl_iter}"
 				results2pcp_add_value "table_entries:${tb_entries}"
 				results2pcp_add_value "runtime:${max_elpased_time}"
 				results2pcp_add_value "numprocs:${proc}"
@@ -367,7 +367,7 @@ reduce_data()
 {
 	tbl_entries=$1
 	tprocs=$2
-	real_time="0"
+	real_time=0
 	system_time=0
 	user_time=0
 	iterations=0
@@ -392,9 +392,7 @@ reduce_data()
 			real_time=$(echo "scale=2;${tmp}+${real_time}" | bc)
 		done
 	done
-	real_time=$(echo "scale=2;${real_time}/(${iterations}*${tprocs})" | bc)
-	user_time=$(echo "scale=2;${user_time}/${iterations}" | bc)
-	system_time=$(echo "scale=2;${system_time}/${iterations}" | bc)
+	real_time=$(echo "scale=2;${real_time}/${iterations}" | bc)
 	echo $tbl_entries,$tprocs,$real_time,$user_time,$system_time,$start_time,$end_time >> $results_file
 }
 

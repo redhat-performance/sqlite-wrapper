@@ -140,15 +140,15 @@ For each process count N:
 1. N independent SQLite databases are created, each with WAL journaling enabled.
 2. All N processes wait on a synchronization barrier (ready file).
 3. Once released, each process inserts the full record set 3 times sequentially.
-4. Timing is captured per process; the worst-case (maximum) time across all processes is used as the result.
+4. Timing is average across allprocess.
 
 ### Performance Metrics
 
 Each test configuration reports five key metrics:
 
 1. **Real_time**: Average elapsed (wall-clock) time per process across iterations.
-2. **User_time**: Total user-space CPU time summed across processes, averaged across iterations.
-3. **System_time**: Total kernel CPU time summed across processes, averaged across iterations.
+2. **User_time**: Total user-space CPU time summed across processes.
+3. **System_time**: Total kernel CPU time summed across processes.
 4. **Start_Date**: Timestamp when the test run began.
 5. **End_Date**: Timestamp when the test run completed.
 
