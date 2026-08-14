@@ -392,7 +392,7 @@ reduce_data()
 			real_time=$(echo "scale=2;${tmp}+${real_time}" | bc)
 		done
 	done
-	real_time=$(echo "scale=2;${real_time}/${iterations}" | bc)
+	real_time=$(echo "scale=2;${real_time}/(${iterations}*${tprocs})" | bc)
 	echo $tbl_entries,$tprocs,$real_time,$user_time,$system_time,$start_time,$end_time >> $results_file
 }
 
