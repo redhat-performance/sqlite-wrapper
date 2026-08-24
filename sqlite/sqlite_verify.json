@@ -1,0 +1,11 @@
+[
+    {
+        "table_entries":5000,
+        "procs":8,
+        "Real_time":106.52,
+        "User_time":71249.11,
+        "System_time":703.33,
+        "Start_Date":"2026-07-30T19:41:47Z",
+        "End_Date":"2026-07-30T22:10:15Z"
+    }
+]

@@ -1,0 +1,12 @@
+iteration 0
+running 0
+numthreads 0
+runtime 0
+throughput 0
+latency 0
+table_entries 0
+numprocs 0
+sys_time 0
+user_time 0
+start_time 0
+end_time 0
