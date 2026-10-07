@@ -392,7 +392,13 @@ reduce_data()
 			real_time=$(echo "scale=2;${tmp}+${real_time}" | bc)
 		done
 	done
+	#
+	# Real_time: average per process across iterations.
+	# User/System: sum across processes, then average across iterations.
+	#
 	real_time=$(echo "scale=2;${real_time}/(${iterations}*${tprocs})" | bc)
+	user_time=$(echo "scale=2;${user_time}/${iterations}" | bc)
+	system_time=$(echo "scale=2;${system_time}/${iterations}" | bc)
 	echo $tbl_entries,$tprocs,$real_time,$user_time,$system_time,$start_time,$end_time >> $results_file
 }
 
