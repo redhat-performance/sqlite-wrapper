@@ -396,9 +396,12 @@ reduce_data()
 	# Real_time: average per process across iterations.
 	# User/System: sum across processes, then average across iterations.
 	#
-	real_time=$(echo "scale=2;${real_time}/(${iterations}*${tprocs})" | bc)
-	user_time=$(echo "scale=2;${user_time}/${iterations}" | bc)
-	system_time=$(echo "scale=2;${system_time}/${iterations}" | bc)
+	#
+	# bc omits the leading 0 for values in (-1,1); normalize so CSV has 0.23 not .23.
+	#
+	real_time=$(echo "scale=2;${real_time}/(${iterations}*${tprocs})" | bc | sed 's/^\./0./; s/^-\./-0./')
+	user_time=$(echo "scale=2;${user_time}/${iterations}" | bc | sed 's/^\./0./; s/^-\./-0./')
+	system_time=$(echo "scale=2;${system_time}/${iterations}" | bc | sed 's/^\./0./; s/^-\./-0./')
 	echo $tbl_entries,$tprocs,$real_time,$user_time,$system_time,$start_time,$end_time >> $results_file
 }
 
